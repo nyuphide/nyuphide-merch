@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NYU PhiDE Merch</title>
+<meta name="description" content="Official merch store for the NYU chapter of Phi Delta Epsilon.">
+<link rel="icon" href="images/sym-purple.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#F7F4FB; --surface:#FFFFFF; --fg:#24113F; --muted:#5E5573; --line:#E3D9F2;
+  --band:#2A1650; --band-fg:#FFFFFF; --band-soft:#D9C8FF;
+  --accent:#592E84; --accent-fg:#FFFFFF; --accent-soft:#EDE4FF;
+  --display:'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+  --body:'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#140A24; --surface:#1F1335; --fg:#EDE6F8; --muted:#B3A7C9; --line:#35254F;
+  --band:#24113F; --accent:#B794F6; --accent-fg:#1A0D2E; --accent-soft:#33204F; color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5}
+img{max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.5px;line-height:1;margin:0;text-wrap:balance}
+a{color:inherit}
+button,select,input,textarea{font:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+
+/* header */
+.hdr{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:40px;height:52px;object-fit:contain}
+.brand b{display:block;font-family:var(--display);font-weight:400;font-size:30px;line-height:1}
+.brand span{font-size:11px;font-weight:700;letter-spacing:4px;color:var(--muted)}
+.nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav a{text-decoration:none;font-weight:500;padding:10px 14px;border-radius:8px}
+.nav a:hover{background:var(--accent-soft)}
+.cart-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-fg);border:0;border-radius:8px;padding:10px 16px;font-weight:700;cursor:pointer;min-height:44px}
+.cart-btn .count{background:var(--accent-fg);color:var(--accent);border-radius:999px;min-width:24px;height:24px;display:inline-grid;place-items:center;font-size:13px;padding:0 6px}
+
+/* band */
+.band{position:relative;overflow:hidden;background:var(--band);color:var(--band-fg)}
+.band .wrap{position:relative;padding-block:48px 56px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center}
+.band-mark{position:absolute;right:-40px;top:-60px;width:520px;max-width:none;opacity:.08;pointer-events:none}
+.ekg{position:absolute;left:0;right:0;top:50%;width:100%;height:120px;opacity:.3;pointer-events:none}
+.welcome{background:#FFFFFF;color:#24113F;border-radius:8px;padding:32px;box-shadow:0 18px 40px rgba(10,4,24,.35);display:flex;flex-direction:column;gap:8px;text-align:center;align-items:center}
+.welcome p{margin:0;color:#592E84}
+.welcome h1{font-size:clamp(40px,5vw,56px)}
+.rule{width:64px;height:3px;background:#9D6BFF;border-radius:2px;margin:6px 0}
+.next{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--band-soft)}
+.next .date{font-family:var(--display);font-size:clamp(56px,8vw,88px);line-height:.95}
+.next .days{font-size:20px;color:var(--band-soft)}
+.ghost{align-self:flex-start;color:var(--band-fg);border:1.5px solid var(--band-soft);border-radius:8px;padding:10px 16px;text-decoration:none;font-weight:700;margin-top:6px}
+.ghost:hover{background:rgba(255,255,255,.08)}
+
+/* shop */
+section.block{padding-block:56px 16px}
+.block-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.block-head h2{font-size:52px}
+.block-head p{margin:4px 0 0;color:var(--muted);max-width:60ch}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.photo{aspect-ratio:4/5;width:100%;background:#4B2A9E;border-radius:6px;object-fit:cover;display:block}
+.card h3{font-size:28px}
+.desc{color:var(--muted);font-size:15px;margin:0}
+.price{font-weight:700;font-size:18px;margin:0}
+.row{display:flex;gap:8px;align-items:center}
+.row label{font-size:14px;color:var(--muted)}
+select{border:1.5px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;padding:8px 10px;min-height:44px;flex:1}
+.add{border:0;background:var(--accent);color:var(--accent-fg);border-radius:6px;padding:10px 14px;font-weight:700;cursor:pointer;min-height:44px}
+.add.done{background:var(--accent-soft);color:var(--fg)}
+
+/* calendar */
+.months{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.month{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.month h3{font-size:34px;color:var(--accent)}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));text-align:center;font-variant-numeric:tabular-nums;row-gap:2px}
+.cal .wd{font-size:12px;font-weight:700;color:var(--muted);padding-bottom:4px}
+.cal span{height:38px;display:grid;place-items:center;font-size:15px}
+.cal .od b{width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--accent-fg);display:grid;place-items:center;box-shadow:0 0 0 3px var(--accent-soft)}
+.cal .today{text-decoration:underline;text-underline-offset:4px;font-weight:700}
+.note{min-height:24px;font-size:14px;font-weight:700;color:var(--accent);margin:0}
+.legend{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin-top:16px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--accent);margin-right:6px;vertical-align:-1px}
+
+footer{margin-top:56px;border-top:1px solid var(--line)}
+footer .wrap{padding-block:24px 32px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(10,4,24,.5);z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--bg);z-index:41;display:flex;flex-direction:column;border-left:1px solid var(--line)}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:20px 20px 12px}
+.drawer-head h2{font-size:40px}
+.x{border:0;background:transparent;color:var(--fg);width:44px;height:44px;border-radius:8px;cursor:pointer}
+.x:hover{background:var(--accent-soft)}
+.drawer-body{overflow:auto;padding:0 20px 20px;display:flex;flex-direction:column;gap:16px;flex:1}
+.items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.item{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.item small{color:var(--muted)}
+.qty{display:flex;align-items:center;gap:4px}
+.qty button{width:36px;height:36px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);border-radius:6px;cursor:pointer}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:18px;border-top:1px solid var(--line);padding-top:12px}
+.empty{color:var(--muted);margin:0}
+form{display:flex;flex-direction:column;gap:12px}
+form label{display:flex;flex-direction:column;gap:4px;font-size:14px;font-weight:500}
+form input,form textarea{border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:6px;padding:10px 12px;min-height:44px}
+.submit{border:0;background:var(--accent);color:var(--accent-fg);border-radius:8px;padding:12px;font-weight:700;min-height:48px;cursor:pointer}
+.submit:disabled{opacity:.5;cursor:not-allowed}
+.err{color:#B42318;font-size:14px;margin:0}
+@media (prefers-color-scheme: dark){.err{color:#FF9B8F}}
+.pay{background:var(--accent-soft);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.pay p{margin:0}
+.pay .big{font-family:var(--display);font-size:44px;line-height:1}
+.copyrow{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.copyrow code{font-family:var(--body);font-weight:700;overflow-wrap:anywhere}
+.copy{border:1.5px solid var(--accent);background:transparent;color:var(--accent);border-radius:6px;padding:6px 12px;font-weight:700;cursor:pointer;min-height:36px}
+.small{font-size:13px;color:var(--muted)}
+
+@media (max-width:980px){.months{grid-template-columns:repeat(2,minmax(0,1fr))}.band .wrap{grid-template-columns:minmax(0,1fr)}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.grid{grid-template-columns:minmax(0,1fr)}.months{grid-template-columns:minmax(0,1fr)}.block-head h2{font-size:42px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<script src="config.js"></script>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="NYU PhiDE Merch, home">
+      <img src="images/sym-purple.png" alt="">
+      <span><b>NYU PhiDE Merch</b><span>PHI DELTA EPSILON</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#shop">Shop</a>
+      <a href="#order-days">Order days</a>
+      <button class="cart-btn" id="openCart" type="button" aria-haspopup="dialog">My order <span class="count" id="cartCount">0</span></button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="band" aria-label="Welcome">
+    <img class="band-mark" src="images/sym-white.png" alt="">
+    <svg class="ekg" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,60 L620,60 L650,60 L672,36 L694,60 L720,60 L748,6 L780,114 L808,60 L838,60 L860,46 L882,60 L1440,60" fill="none" stroke="#B89AF0" stroke-width="3" stroke-linejoin="round"/></svg>
+    <div class="wrap">
+      <div class="welcome">
+        <p>Welcome to the</p>
+        <h1>Phi Delta Epsilon Shop!</h1>
+        <div class="rule"></div>
+        <p id="sponsorLine" hidden></p>
+        <p>Follow us on IG <b id="igHandle"></b></p>
+      </div>
+      <div class="next" aria-live="polite">
+        <span class="eyebrow">Next group order day</span>
+        <span class="date" id="nextDate">—</span>
+        <span class="days" id="nextDays"></span>
+        <a class="ghost" href="#order-days">See all order days</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="shop" aria-labelledby="shopTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <h2 id="shopTitle">Shop</h2>
+          <p>Add what you want to your order, submit it, then pay with Zelle before the next group order day.</p>
+        </div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="block" id="order-days" aria-labelledby="calTitle">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <h2 id="calTitle">Group Merch Order Days</h2>
+          <p>We place one chapter order on each of these days. Get your order and payment in before then.</p>
+        </div>
+      </div>
+      <div class="months" id="months"></div>
+      <div class="legend"><span><i></i>Group merch order day</span><span><u>Underlined</u> = today</span></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span id="footChapter"></span>
+    <span>Questions? DM us on Instagram.</span>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" hidden>
+  <div class="drawer-head">
+    <h2 id="drawerTitle">My order</h2>
+    <button class="x" id="closeCart" type="button" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body">
+    <div id="cartView">
+      <ul class="items" id="items"></ul>
+      <p class="empty" id="empty">Nothing added yet. Pick an item and a size in the shop.</p>
+      <div class="total" id="totalRow" hidden><span>Total</span><span id="totalAmt"></span></div>
+    </div>
+    <div id="formWrap">
+      <form id="orderForm" novalidate>
+        <label for="fName">Full name<input id="fName" name="name" autocomplete="name" maxlength="80" required></label>
+        <label for="fEmail">NYU email<input id="fEmail" name="email" type="email" autocomplete="email" maxlength="120" required></label>
+        <label for="fNotes">Notes (optional)<textarea id="fNotes" name="notes" rows="2" maxlength="300"></textarea></label>
+        <p class="err" id="err" hidden></p>
+        <button class="submit" id="submitBtn" type="submit">Place order</button>
+        <span class="small">You'll pay with Zelle on the next screen.</span>
+      </form>
+    </div>
+    <div class="pay" id="payView" hidden>
+      <p><b>Order received!</b> Now pay with Zelle to lock it in.</p>
+      <p class="big" id="payTotal"></p>
+      <div class="copyrow"><span>Send to <code id="payTo"></code></span><button class="copy" type="button" data-copy="payTo">Copy</button></div>
+      <div class="copyrow"><span>Memo: <code id="payMemo"></code></span><button class="copy" type="button" data-copy="payMemo">Copy</button></div>
+      <p class="small" id="payName"></p>
+      <p class="small">Put your order number in the Zelle memo so we can match your payment. Zelle payments can't be undone, so double-check the amount.</p>
+      <button class="add" id="newOrder" type="button">Start a new order</button>
+    </div>
+  </div>
+</aside>
+
+<script>
+(function(){
+  var S = window.SITE || {};
+  var products = S.products || [];
+  var cart = [];
+  function $(id){ return document.getElementById(id); }
+  function el(tag, attrs, text){
+    var n = document.createElement(tag);
+    if (attrs) for (var k in attrs){ if (k === 'class') n.className = attrs[k]; else n.setAttribute(k, attrs[k]); }
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function money(n){ return '$' + (Math.round(n*100)/100).toFixed(2); }
+  function priceText(p){ return p > 0 ? money(p) : 'Price TBD'; }
+  function parse(s){ var p = s.split('-'); return new Date(+p[0], +p[1]-1, +(p[2]||1)); }
+  function today(){ var d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+  var fmt = new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric'});
+
+  // text from config
+  $('igHandle').textContent = '@' + (S.instagram || '');
+  $('footChapter').textContent = 'Phi Delta Epsilon Medical Fraternity · ' + (S.chapterName || '') + ' · @' + (S.instagram || '');
+  if (S.sponsor){ $('sponsorLine').textContent = 'Sponsored by ' + S.sponsor; $('sponsorLine').hidden = false; }
+
+  // shop
+  products.forEach(function(p){
+    var card = el('article',{class:'card'});
+    card.appendChild(el('img',{class:'photo',src:p.img,alt:p.name,loading:'lazy'}));
+    card.appendChild(el('h3',null,p.name));
+    card.appendChild(el('p',{class:'desc'},p.desc || ''));
+    card.appendChild(el('p',{class:'price'},priceText(p.price)));
+    var row = el('div',{class:'row'});
+    row.appendChild(el('label',{for:'size-'+p.id},'Size'));
+    var sel = el('select',{id:'size-'+p.id});
+    (p.sizes || ['One size']).forEach(function(s){ var o = el('option',null,s); if (s==='M') o.selected = true; sel.appendChild(o); });
+    row.appendChild(sel); card.appendChild(row);
+    var add = el('button',{class:'add',type:'button'},'Add to order');
+    add.addEventListener('click', function(){
+      addItem(p, sel.value);
+      add.textContent = 'Added ✓'; add.classList.add('done');
+      setTimeout(function(){ add.textContent = 'Add to order'; add.classList.remove('done'); }, 1200);
+    });
+    card.appendChild(add);
+    $('grid').appendChild(card);
+  });
+
+  // cart
+  function total(){ return cart.reduce(function(a,x){ return a + x.qty * (x.price || 0); }, 0); }
+  function addItem(p, size){
+    var hit = cart.filter(function(x){ return x.id===p.id && x.size===size; })[0];
+    if (hit) hit.qty++; else cart.push({id:p.id,name:p.name,price:p.price||0,size:size,qty:1});
+    renderCart();
+  }
+  function renderCart(){
+    $('cartCount').textContent = cart.reduce(function(a,x){ return a + x.qty; }, 0);
+    var ul = $('items'); ul.textContent = '';
+    cart.forEach(function(x, i){
+      var li = el('li',{class:'item'});
+      var left = el('div');
+      left.appendChild(el('div',null,x.name));
+      left.appendChild(el('small',null,'Size: ' + x.size + ' · ' + priceText(x.price)));
+      var q = el('div',{class:'qty'});
+      var minus = el('button',{type:'button','aria-label':'Remove one ' + x.name},'−');
+      var plus = el('button',{type:'button','aria-label':'Add one ' + x.name},'+');
+      minus.addEventListener('click', function(){ x.qty--; if (x.qty <= 0) cart.splice(i,1); renderCart(); });
+      plus.addEventListener('click', function(){ x.qty++; renderCart(); });
+      q.appendChild(minus); q.appendChild(el('span',null,String(x.qty))); q.appendChild(plus);
+      li.appendChild(left); li.appendChild(q); ul.appendChild(li);
+    });
+    $('empty').hidden = cart.length > 0;
+    $('totalRow').hidden = cart.length === 0;
+    $('totalAmt').textContent = money(total());
+    $('submitBtn').disabled = cart.length === 0;
+  }
+  function openCart(){ $('scrim').hidden = false; $('drawer').hidden = false; $('closeCart').focus(); }
+  function closeCart(){ $('scrim').hidden = true; $('drawer').hidden = true; $('openCart').focus(); }
+  $('openCart').addEventListener('click', openCart);
+  $('closeCart').addEventListener('click', closeCart);
+  $('scrim').addEventListener('click', closeCart);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !$('drawer').hidden) closeCart(); });
+
+  function orderNumber(){
+    var c = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', s = '';
+    for (var i=0;i<5;i++) s += c[Math.floor(Math.random()*c.length)];
+    return 'PDE-' + s;
+  }
+
+  $('orderForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = $('fName').value.trim(), email = $('fEmail').value.trim(), notes = $('fNotes').value.trim();
+    var err = $('err');
+    if (!name){ err.textContent = 'Add your full name so we know whose order this is.'; err.hidden = false; return; }
+    if (!/^\S+@\S+\.\S+$/.test(email)){ err.textContent = 'Enter a valid email, like netid@nyu.edu.'; err.hidden = false; return; }
+    err.hidden = true;
+    var order = orderNumber();
+    var payload = { order: order, name: name, email: email, notes: notes,
+      items: cart.map(function(x){ return {id:x.id, name:x.name, size:x.size, qty:x.qty}; }) };
+    var btn = $('submitBtn'); btn.disabled = true; btn.textContent = 'Placing order…';
+    var done = function(){ showPay(order); btn.textContent = 'Place order'; };
+    if (!S.orderScriptUrl){
+      console.warn('orderScriptUrl is empty in config.js, so this order was not saved (demo mode).');
+      done(); return;
+    }
+    fetch(S.orderScriptUrl, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(payload) })
+      .then(done)
+      .catch(function(){
+        btn.disabled = false; btn.textContent = 'Place order';
+        err.textContent = 'Your order didn’t go through. Check your connection and try again.'; err.hidden = false;
+      });
+  });
+
+  function showPay(order){
+    $('payTotal').textContent = total() > 0 ? money(total()) : 'Amount TBD';
+    $('payTo').textContent = S.zelleContact || '';
+    $('payMemo').textContent = order;
+    $('payName').textContent = S.zelleName ? 'The recipient should show up in Zelle as ' + S.zelleName + '.' : '';
+    $('cartView').hidden = true; $('formWrap').hidden = true; $('payView').hidden = false;
+  }
+  $('newOrder').addEventListener('click', function(){
+    cart = []; $('orderForm').reset(); $('submitBtn').textContent = 'Place order';
+    $('cartView').hidden = false; $('formWrap').hidden = false; $('payView').hidden = true; renderCart();
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.copy'), function(b){
+    b.addEventListener('click', function(){
+      var t = $(b.getAttribute('data-copy')).textContent;
+      var ok = function(){ b.textContent = 'Copied'; setTimeout(function(){ b.textContent = 'Copy'; }, 1200); };
+      if (navigator.clipboard) navigator.clipboard.writeText(t).then(ok, function(){});
+    });
+  });
+
+  // next order day
+  var days = (S.orderDays || []).map(parse).sort(function(a,b){ return a-b; });
+  (function(){
+    var t = today(), d = days.filter(function(x){ return x >= t; })[0];
+    if (!d){ $('nextDate').textContent = 'TBA'; $('nextDays').textContent = 'Next order day coming soon.'; return; }
+    var n = Math.round((d - t) / 86400000);
+    $('nextDate').textContent = fmt.format(d);
+    $('nextDays').textContent = n === 0 ? 'That’s today. Get your order in now.' : n + (n===1?' day':' days') + ' to get your order in.';
+  })();
+
+  // calendar
+  (function(){
+    var names = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var t = today(), iso = (S.orderDays || []);
+    (S.calendarMonths || []).forEach(function(ym){
+      var y = +ym.split('-')[0], m = +ym.split('-')[1] - 1;
+      var box = el('div',{class:'month'});
+      box.appendChild(el('h3',null,names[m] + ' ' + y));
+      var cal = el('div',{class:'cal'});
+      ['S','M','T','W','T','F','S'].forEach(function(w){ cal.appendChild(el('span',{class:'wd','aria-hidden':'true'},w)); });
+      var start = new Date(y,m,1).getDay(), dim = new Date(y,m+1,0).getDate(), note = '';
+      for (var i=0;i<start;i++) cal.appendChild(el('span'));
+      for (var d=1; d<=dim; d++){
+        var key = y + '-' + String(m+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+        var isOd = iso.indexOf(key) >= 0;
+        var cell = el('span', isOd ? {class:'od'} : null);
+        if (t.getFullYear()===y && t.getMonth()===m && t.getDate()===d) cell.className += (cell.className?' ':'') + 'today';
+        if (isOd){ cell.appendChild(el('b',{'aria-label': d + ', group merch order day'}, String(d))); note = 'Order day: ' + fmt.format(new Date(y,m,d)); }
+        else cell.textContent = d;
+        cal.appendChild(cell);
+      }
+      box.appendChild(cal);
+      box.appendChild(el('p',{class:'note'}, note));
+      $('months').appendChild(box);
+    });
+  })();
+
+  renderCart();
+})();
+</script>
+</body>
+</html>
