@@ -61,6 +61,10 @@ section.block{padding-block:48px 16px}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:12px}
 .photo{aspect-ratio:1/1;width:100%;background:#EFE8FA;border-radius:8px;object-fit:cover;display:block}
+.thumbs{display:flex;gap:8px}
+.thumbs button{padding:0;border:2px solid var(--line);background:none;border-radius:6px;overflow:hidden;cursor:pointer;width:54px;height:54px;flex:0 0 auto}
+.thumbs button[aria-pressed="true"]{border-color:var(--accent)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
 .card h3{font-size:26px}
 .desc{color:var(--muted);font-size:14px;margin:0;flex:1}
 .price{font-weight:700;font-size:18px;margin:0}
@@ -76,7 +80,8 @@ select{border:1.5px solid var(--line);background:var(--bg);color:var(--fg);borde
 .how div p{margin:6px 0 0;color:var(--muted);font-size:15px}
 
 footer{margin-top:48px;border-top:1px solid var(--line)}
-footer .wrap{padding-block:24px 32px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+footer .wrap{padding-block:24px 12px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+.credit{text-align:center;color:var(--muted);font-size:13px;padding-block:8px 28px;opacity:.85}
 
 .scrim{position:fixed;inset:0;background:rgba(10,4,24,.5);z-index:40}
 .drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--bg);z-index:41;display:flex;flex-direction:column;border-left:1px solid var(--line)}
@@ -160,6 +165,7 @@ form input,form textarea{border:1.5px solid var(--line);background:var(--surface
     <span id="footChapter"></span>
     <span>Questions? DM us on Instagram.</span>
   </div>
+  <div class="credit" id="credit"></div>
 </footer>
 
 <div class="scrim" id="scrim" hidden></div>
@@ -210,6 +216,7 @@ form input,form textarea{border:1.5px solid var(--line);background:var(--surface
   $('disc').textContent=S.priceDisclaimer||'';
   $('how2').textContent='Submit your list by '+(S.deadlineLabel||'the deadline')+'. After that the order is locked in.';
   $('footChapter').textContent='Phi Delta Epsilon Medical Fraternity · '+(S.chapterName||'')+' · @'+(S.instagram||'');
+  $('credit').textContent='Site created by '+(S.creditName||'')+' · nyuphidemerch.com · © 2026';
 
   // countdown
   (function(){
@@ -228,8 +235,10 @@ form input,form textarea{border:1.5px solid var(--line);background:var(--surface
   // product cards
   products.forEach(function(p){
     var card=el('article',{class:'card'});
-    var img=el('img',{class:'photo',src:p.colors[0].img,alt:p.name,loading:'lazy'});
+    var img=el('img',{class:'photo',src:p.colors[0].imgs[0],alt:p.name,loading:'lazy'});
     card.appendChild(img);
+    var thumbs=el('div',{class:'thumbs'});
+    card.appendChild(thumbs);
     card.appendChild(el('h3',null,p.name));
     card.appendChild(el('p',{class:'desc'},p.desc||''));
     var price=el('p',{class:'price'}); price.textContent=overall(p);
@@ -251,8 +260,20 @@ form input,form textarea{border:1.5px solid var(--line);background:var(--surface
     srow.appendChild(ssel); card.appendChild(srow);
 
     function colorIdx(){ return csel?parseInt(csel.value,10):0; }
-    function refresh(){ var c=p.colors[colorIdx()]; img.src=c.img; price.textContent=multi?(c.name+' · '+rangeText(c.low,c.high)):overall(p); }
+    function setMain(src){ img.src=src; Array.prototype.forEach.call(thumbs.children,function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-src')===src ? 'true':'false'); }); }
+    function buildThumbs(c){
+      thumbs.textContent='';
+      c.imgs.forEach(function(src,i){
+        var b=el('button',{type:'button','data-src':src,'aria-label':p.name+' view '+(i+1),'aria-pressed':i===0?'true':'false'});
+        b.appendChild(el('img',{src:src,alt:'',loading:'lazy'}));
+        b.addEventListener('click',function(){ setMain(src); });
+        thumbs.appendChild(b);
+      });
+      thumbs.hidden = c.imgs.length<2;
+    }
+    function refresh(){ var c=p.colors[colorIdx()]; buildThumbs(c); setMain(c.imgs[0]); price.textContent=multi?(c.name+' · '+rangeText(c.low,c.high)):overall(p); }
     if(csel) csel.addEventListener('change',refresh);
+    buildThumbs(p.colors[0]);
 
     var add=el('button',{class:'add',type:'button'},'Add to list');
     add.addEventListener('click',function(){
