@@ -16,9 +16,10 @@ window.SITE = {
   deadline: "2026-12-01T23:59:00-05:00",
   deadlineLabel: "Tuesday, December 1 · 11:59 PM",
   pickupLine: "Pick up at the first general meeting next semester (or earlier).",
-  priceDisclaimer: "Prices are estimates and may change. The more people order, the lower they go — but some may not come down.",
+  priceDisclaimer: "Prices are subject to change. By placing interest now, you're confirming your order based on the listed price range. Items with minimal orders will be dropped from the group order.",
 
-  sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+  // Default size run (applies to any item without its own `sizes`).
+  sizes: ["S", "M", "L", "XL"],
 
   products: [
     { id: "mission-hoodie", name: "PhiDE Mission Hoodie",
@@ -53,6 +54,7 @@ window.SITE = {
     { id: "mission-zip", name: "PhiDE Mission Zip-Up",
       desc: "Full-zip hoodie. ΦΔΕ 1905 on the chest, mission statement on the back.",
       colors: [
+        { name: "Black",      low: 41, high: 53, imgs: ["images/mission-zip-black-1.jpg","images/mission-zip-black-2.jpg"] },
         { name: "Dark Grey",  low: 41, high: 53, imgs: ["images/mission-zip-darkgrey-1.jpg","images/mission-zip-darkgrey-2.jpg"] },
         { name: "Light Grey", low: 41, high: 53, imgs: ["images/mission-zip-lightgrey-1.jpg","images/mission-zip-lightgrey-2.jpg"] }
       ] },
@@ -60,6 +62,27 @@ window.SITE = {
       desc: "Washed boxy zip hoodie with a star varsity print on the back.",
       colors: [
         { name: "Washed Grey", low: 41, high: 51, imgs: ["images/boxy-fleece-washedgrey-1.jpg","images/boxy-fleece-washedgrey-2.jpg"] }
+      ] },
+    { id: "balance-denim", name: "PhiDE Balance Denim Jacket",
+      desc: "Washed denim jacket with the winged ΦΔΕ caduceus-and-scales crest on the back.",
+      colors: [
+        { name: "Washed Black", low: 47, high: 55, imgs: ["images/balance-denim-1.jpg","images/balance-denim-2.jpg"] }
+      ] },
+    { id: "balance-hoodie", name: "PhiDE Balance Washed Hoodie",
+      desc: "Washed hoodie with the winged ΦΔΕ caduceus-and-scales crest on the back.",
+      colors: [
+        { name: "Washed Black", low: 43, high: 53, imgs: ["images/balance-hoodie-1.jpg","images/balance-hoodie-2.jpg"] }
+      ] },
+    { id: "windbreaker", name: "PhiDE Embroidered Windbreaker",
+      desc: "Lightweight hooded windbreaker with ΦΔΕ embroidered on the chest.",
+      colors: [
+        { name: "Black", low: 47, high: 55, imgs: ["images/windbreaker-black-1.jpg"] }
+      ] },
+    { id: "classic-qzip", name: "PhiDE Classic Embroidered Q-Zip",
+      desc: "Embroidered quarter-zip. PHI DELTA EPSILON · EST. 1904 on the chest.",
+      colors: [
+        { name: "Black", low: 33, high: 38, imgs: ["images/classic-qzip-black-1.jpg"] },
+        { name: "Grey",  low: 33, high: 38, imgs: ["images/classic-qzip-grey-1.jpg"] }
       ] },
     { id: "sweatpants", name: "PhiDE Essential Sweatpants",
       desc: "Open-hem sweatpants with the caduceus crest on the leg.",

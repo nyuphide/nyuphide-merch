@@ -256,7 +256,7 @@ form input,form textarea{border:1.5px solid var(--line);background:var(--surface
     var srow=el('div',{class:'row'});
     srow.appendChild(el('label',{for:'s-'+p.id},'Size'));
     var ssel=el('select',{id:'s-'+p.id});
-    (S.sizes||['One size']).forEach(function(s){ var o=el('option',null,s); if(s==='M')o.selected=true; ssel.appendChild(o); });
+    (p.sizes||S.sizes||['One size']).forEach(function(s){ var o=el('option',null,s); if(s==='M')o.selected=true; ssel.appendChild(o); });
     srow.appendChild(ssel); card.appendChild(srow);
 
     function colorIdx(){ return csel?parseInt(csel.value,10):0; }
